@@ -1,0 +1,19 @@
+# Creating the stack for Cloud Formation to deploy the dynamo db service in AWS
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  OrdersTable:
+    Type: AWS::DynamoDB::Table    # Resouce type - Table
+    Properties:
+      TableName: translatorBot     # Table Name - translatorBot
+      AttributeDefinitions: 
+        - AttributeName: "id"      # Partition Key definition
+          AttributeType: "S"       # Partition Key type - String
+      KeySchema:
+        - AttributeName: "id"      
+          KeyType: "HASH"          # Partition Key role
+      TimeToLiveSpecification:
+        AttributeName: "ExpirationTime"
+        Enabled: true
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"

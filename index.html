@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Translated Data</title>
+        <!-- CSS styling for the html page-->
+        <style>
+               th{
+                   cursor: pointer;
+                   color:#fff;
+                }
+
+        </style>
+        <!-- Textbox for searching language to filter data based on target language-->
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <input id="search-input" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+    
+        <table class="table table-striped">
+            <tr  class="bg-info">
+                <th data-colname="original_text" data-order="desc">Original Text &#9650</th>
+                <th data-colname="source_language" data-order="desc">Source Language &#9650</th>
+                <th data-colname="target_language" data-order="desc">Target Language &#9650</th>
+                <th data-colname="translated_text" data-order="desc">Translated Text &#9650</th>
+            </tr>
+        
+            <tbody id="translatedTable">
+                
+            </tbody>
+        </table>
+        <!-- Accessing the GET API method to access CloudFront url which is connected to API gateway url to access the data from Dynamo DB-->
+        <script>
+            $.ajax({
+                method:'GET',
+                url:'https://d136kfv36koqaz.cloudfront.net/translation',
+                success:function(response){
+                    myArray = response.translations
+                    buildTable(myArray)
+                    console.log(myArray)
+                }
+            })
+
+            // Event Handler for each row with sort functionality for each column
+            $('th').on('click', function(){
+                var column = $(this).data('colname')
+                var order = $(this).data('order')
+                var text = $(this).html()
+                text = text.substring(0, text.length - 1);
+                if (order == 'desc'){
+                    myArray = myArray.sort((a, b) => a[column] > b[column] ? 1 : -1)
+                    $(this).data("order","asc");
+                    text += '&#9660'
+                }
+                else{
+                    myArray = myArray.sort((a, b) => a[column] < b[column] ? 1 : -1)
+                    $(this).data("order","desc");
+                    text += '&#9650'
+                }
+                $(this).html(text)
+                buildTable(myArray)
+            })
+
+            // Search functionality
+            $('#search-input').on('keyup',function(){
+                var value = $(this).val()
+                var data = searchTable(value,myArray)
+                buildTable(data)
+            })
+            
+            // searchTable method
+            function searchTable(value,data){
+                var filteredData = []
+                for (var i=0;i< data.length; i++){
+                    value = value.toLowerCase()
+                    var target = data[i].target_language.toLowerCase()
+
+                    if(target.includes(value)){
+                        filteredData.push(data[i])
+                    }
+                }
+                return filteredData
+            }
+            
+            // buildTable method
+            function buildTable(data){
+            var table = document.getElementById('translatedTable')
+            table.innerHTML = ''
+            for (var i = 0; i < data.length; i++){
+                var row = `<tr>
+                                <td>${data[i].original_text}</td>
+                                <td>${data[i].source_language}</td>
+                                <td>${data[i].target_language}</td>
+                                <td>${data[i].translated_text}</td>
+                          </tr>`
+                table.innerHTML += row
+            }
+        }
+        </script>
+    </head>
+    <!-- <body> -->
+        <div id="app"></div>
+    <!-- </body> -->
+    <!-- <script src="fetch.js"></script> -->
+</html>
