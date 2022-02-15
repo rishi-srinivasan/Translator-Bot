@@ -1,7 +1,7 @@
 <h1># Translator-Bot</h1>
 <h2>Repository containing codes and files related to the application - Translator Bot built using AWS cloud services.</h2>
 
-<h3>Folder Structure:</h3><br>
+<h3>Repository Structure:</h3><br>
 <p>
   1. Docker Image folder contains the docker image of the html file - index.html that displays data Translation data and the html file itself<br>
   2. Lambda folder contains the lambda functions used for the project in AWS in compressed zip folder format<br>
