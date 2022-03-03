@@ -1,6 +1,7 @@
 <h1>Translator-Bot</h1>
-<h2>Repository containing codes and files related to the application - Translator Bot built using AWS cloud services.</h2>
+<h2>Translator chatbot built using AWS and Slack.</h2>
 
+<h3>Repository containing codes and files related to the application - Translator Bot built using AWS cloud services</h3>
 <h3>Repository Structure:</h3><br>
 <p>
   1. Docker Image folder contains the docker image of the html file - index.html that displays data Translation data and the html file itself.<br>
