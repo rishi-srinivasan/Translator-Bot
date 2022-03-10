@@ -29,7 +29,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "public.ecr.aws/p4x4b7a2/translator:latest",
+      "image": "public.ecr.aws/#####/translator:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -56,7 +56,7 @@
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:626480635631:task-definition/translationTask:1",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:########:task-definition/translationTask:1",
   "family": "translationTask",
   "requiresAttributes": [],
   "pidMode": null,
