@@ -14,3 +14,7 @@
   8. index.html file contains the frontend displaying data available in DynamoDB table.
 </p>
 
+<p>
+  <img src="Translator-Bot/M12_Cloud_Computing_Project.drawio.png" alt="Architecture">
+</p>
+
