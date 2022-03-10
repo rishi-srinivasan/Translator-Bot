@@ -15,6 +15,6 @@
 </p>
 
 <p>
-  <img src="Translator-Bot/M12_Cloud_Computing_Project.drawio.png" alt="Architecture">
+  <img src="M12_Cloud_Computing_Project.drawio.png" alt="Architecture">
 </p>
 
