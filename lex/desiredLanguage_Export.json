@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "description": "Source or Target language for Amazon Translate to convert",
+    "name": "desiredLanguage",
+    "version": "1",
+    "enumerationValues": [
+      {
+        "value": "german"
+      },
+      {
+        "value": "spanish"
+      },
+      {
+        "value": "russian"
+      },
+      {
+        "value": "traditional chinese"
+      },
+      {
+        "value": "italian"
+      },
+      {
+        "value": "simplified chinese"
+      },
+      {
+        "value": "japanese"
+      },
+      {
+        "value": "arabic"
+      },
+      {
+        "value": "turkish"
+      },
+      {
+        "value": "english"
+      },
+      {
+        "value": "portuguese"
+      },
+      {
+        "value": "french"
+      },
+      {
+        "value": "czech"
+      }
+    ],
+    "valueSelectionStrategy": "ORIGINAL_VALUE"
+  }
+}
